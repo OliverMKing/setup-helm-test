@@ -5,7 +5,8 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Install Helm
-        run: |
-          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+      - uses: azure/setup-helm@v3
+        with:
+           token: ${{ secrets.GITHUB_TOKEN }}
+        id: install
       - run: helm version
